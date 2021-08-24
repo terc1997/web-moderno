@@ -1,0 +1,53 @@
+<link rel="icon" href="data:;base64,=">
+<video id="meuVideo" width="800" height="450">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+</video>
+<div wm-border>
+    <div wm-progress></div>
+</div>
+<div>
+    <button wm-play>Play</button>
+</div>
+
+<style>
+    button {
+        position: relative;
+        margin-top: 5px;
+        margin-left: 5px;
+    }
+    div[wm-border]{
+        position: absolute;
+        margin-top: 5px;
+        margin-left: 70px;
+        width: 201.5px;
+        height: 20px;
+        border: solid 2px #bbb;
+    }
+    div[wm-progress] {
+        position: relative;
+        margin-top: 0.5px;
+        margin-left: 1px;
+        width: 1px;
+        height: 18px;
+        background-color: #aad;
+    }
+</style>
+
+<script>
+    const player = document.getElementById('meuVideo')
+    const button = document.querySelector('[wm-play]')
+    const progressBar = document.querySelector('[wm-progress]')
+
+    button.addEventListener("click", function (event) {
+        player.paused ? player.play() : player.pause()
+        player.paused ? button.textContent = "Play" : button.textContent = "Pause"
+    })
+    function evolveProgressBar() {
+        progressBar.style.width = Math.floor((200 / this.duration) *
+            this.currentTime) + 'px'
+    }
+    player.addEventListener('timeupdate', evolveProgressBar, false)
+
+
+
+</script>

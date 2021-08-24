@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Desafio Menu</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <style>
+        body{
+            margin: 0;
+        }
+        .cabecalho{
+            float: left;
+            height: 60px;
+            width: 100vw;
+            background-color: #333;
+            border-bottom: solid 2px #33f;
+        }
+        img{
+            padding-top: 5px;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .logo{
+            padding-right: 30px;
+            float: left;
+            width: 250px;
+            box-sizing: content-box;
+        }
+        .menu{
+          float: left;
+        }
+        .menu li{
+            display: inline;
+            list-style: none;
+            padding: 18px;
+            border-radius: 5px;
+            margin: 0px 2px;
+        }
+        .menu li:hover{
+            background-color: steelblue;
+        }
+        .menu li:hover>a{
+            color: black;
+        }
+        a{
+            text-decoration: none;
+            font-family: 'Oswald';
+            color: white;
+        }
+        .menu-toggle{
+            display: none;
+        }
+        .autenticacao{
+            
+            float: right;
+            top: 0;
+            padding: 16px;
+        }
+        .destaque{
+            padding: 5px;
+        }
+        .botao{
+            background-color: red;
+            padding: 10px 15px;
+            border-radius: 20px;
+        }
+        @media (max-width: 787px){
+            .autenticacao{display: none;}
+        }
+        @media (max-width: 626px){
+            .menu{display: none;}
+            .autenticacao{display: none;}
+            .menu-toggle{display: block;
+            float: right;
+            margin-top: 20px;
+            margin-right: 10px;}
+        }
+
+    </style>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <a href="#inicio">
+                <img src="http://files.cod3r.com.br/curso-web/logo.png" alt="Logo" />
+            </a>
+        </div>
+        <button class="menu-toggle">
+            <i class="fa fa-lg fa-bars"></i>
+        </button>
+        <nav class="menu">
+            <ul>
+                <li>
+                    <a href="#inicio">Início</a>
+                </li>
+                <li>
+                    <a href="#cursos">Cursos</a>
+                </li>
+                <li>
+                    <a href="#sobre">Sobre</a>
+                </li>
+                <li>
+                    <a href="#contato">Contato</a>
+                </li>
+            </ul>
+        </nav>
+        <aside class="autenticacao">
+            <a href="#login" class="destaque">Login</a>
+            <a href="#registrar" class="botao destaque">Registrar</a>
+        </aside>
+    </header>
+
+    <script>
+        // Function to get the hash
+        const anchor = a => a.slice(a.indexOf('#'))
+
+        window.addEventListener("hashchange",function(event){
+            let hash = location.hash
+            document.querySelectorAll('li').forEach(function(item){
+                let link = item.querySelector('a').href
+                linkHash = anchor(link)
+
+                if(linkHash === hash){
+                    item.style.background = "steelblue"
+                    item.querySelector('a').style.color = "black"
+                    item.onmouseover = function(){}
+                    item.onmouseout = function(){}
+                }
+                else{
+                    item.onmouseover = function(){
+                        item.style.background = "steelblue"    
+                        item.querySelector('a').style.color = "black"    
+                    }
+                    item.onmouseout = function(){
+                        item.style.background = "#333"
+                        item.querySelector('a').style.color = "white"    
+                    }
+                    item.style.background = "#333"
+                    item.querySelector('a').style.color = "white"
+                }
+            })
+
+
+        },false)
+
+    </script>
+</body>
+
+</html>

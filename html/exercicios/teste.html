@@ -1,0 +1,27 @@
+<span id="square"></span>
+<style>
+    #square {
+        position: absolute;
+        display: block;
+        background-color: dodgerblue;
+        width: 100px;
+        height: 100px;
+    }
+</style>
+<script>
+    function myMove() {
+        const square = document.getElementById("square")
+        let pos = 0
+        let id = setInterval(frame, 5)
+        function frame() {
+            if (pos == 1280 - square.offsetWidth) {
+                square.style.display = 'none'
+                pos = 0
+            } else {
+                pos++;
+                square.style.left = pos + 'px';
+            }
+        }
+    }
+    myMove()
+</script>
